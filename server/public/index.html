@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Node Temperature</title>
+</head>
+<body>
+    <div>
+        <h1 id="temperature"></h1>
+        <h1 id="humidity"></h1>
+        <button id="enciende">LED VERDE encendido</button>
+        <button id="apaga">LED VERDE apagado</button>
+        <button id="enciendeAmarillo">LED AMARILLO encendido</button>
+        <button id="apagaAmarillo">LED AMARILLO apagado</button>
+        <button id="enciendeRojo">LED ROJO encendido</button>
+        <button id="apagaRojo">LED ROJO apagado</button>
+    </div>
+    <script src="https://cdn.socket.io/4.5.0/socket.io.js"></script>
+    <script>
+        var socket = io("http://localhost:3000");
+
+        const enciende = document.getElementById("enciende")
+        const apaga = document.getElementById("apaga")
+        const enciendeAmarillo = document.getElementById("enciendeAmarillo")
+        const apagaAmarillo = document.getElementById("apagaAmarillo")
+        const enciendeRojo = document.getElementById("enciendeRojo")
+        const apagaRojo = document.getElementById("apagaRojo")
+        enciendeAmarillo.onclick = function () {
+            socket.emit("enciendeAmarillo")
+       
+        }
+        enciende.onclick = function () {
+            socket.emit("encender")
+        }
+        apaga.onclick = function () {
+            socket.emit("apagar")
+        }
+        apagaAmarillo.onclick = function () {
+            socket.emit("apagaAmarillo")
+        }
+        enciendeRojo.onclick = function () {
+            socket.emit("enciendeRojo")
+        }
+        apagaRojo.onclick = function () {
+            socket.emit("apagaRojo")
+        }
+    </script>
+
+    <script src="main.js" charset="UTF-8"></script>
+   
+</body>
+</html>
+
